@@ -8,7 +8,13 @@
 </head>
 <body>
 
-<%= yield %>
+<!-- The common things used by every page have been factored out into this html page
+	An application-level layout.
+	-->
+
+	<%= render 'layouts/header' %>
+
+    <%= yield %>
 
 </body>
 </html>
