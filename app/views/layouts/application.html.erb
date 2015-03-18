@@ -1,20 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%= title %></title>
+  <title> <%= title %> </title>
+  <!-- This embedded Ruby invokes a helper method; Rails knows where to look for it (no path needed)
+  -->
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <!-- This is a built-in Rails method for preventing "cross-site request forgery" attacks -->
 </head>
 <body>
 
 <!-- The common things used by every page have been factored out into this html page
-	An application-level layout.
+	An application-level layout
+	The head is in every page.  DRY convention.
+
+	The problem is changing it will change the head in every page.
+	We will also need a subtitle for every specific page.
 	-->
 
 	<%= render 'layouts/header' %>
+	<!-- no underscore needed: Rails understands that this is a partial
+    -->
+    <%= render 'layouts/navigation' %>
+
+<!--
+When the view is rendered this application-level lay
+The contents of the respective view file is inserted here where the yield statement is.
+-->
 
     <%= yield %>
+    <%= render 'layouts/footer' %>
 
 </body>
 </html>
+

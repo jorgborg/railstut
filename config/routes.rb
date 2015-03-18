@@ -1,17 +1,33 @@
 Rails.application.routes.draw do
-  get 'website_core/index'
+  match "/index" => 'website_core#index', via: :get
+# These map get request for the URI "my_core/index" to the "index" action of the "myCore" controller
 
-  get 'website_core/events'
+  match "/events" => 'website_core#events', via: :get
 
-  get 'website_core/shop'
+# changes the routes
+# these factor out the links into a nav bar
+# for this URL, match onto these controller actions, the __ actions on the my_core controller 
+# and do with and only with a get request
 
-  get 'website_core/discussion'
+# this is a change in Rails 4 vs Rails 3.2
+# where the match statements apply to all the http verbs - a little too relaxed
+# want to control which http verbs we are using
 
+
+  match "/shop" => 'website_core#shop', via: :get
+
+  match "/discussion" => 'website_core#discussion', via: :get
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
+  # root 'welcome#index'
+
   root 'website_core#index'
+  # JJ-this makes us go directly to the index page whenever we land on the web application
+  # this are RESTful routes
+  # for static pages we are just using get request
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
