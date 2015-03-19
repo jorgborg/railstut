@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :events
+
   match "/index" => 'website_core#index', via: :get
 # These map get request for the URI "my_core/index" to the "index" action of the "myCore" controller
 
