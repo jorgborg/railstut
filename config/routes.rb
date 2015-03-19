@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   match "/index" => 'website_core#index', via: :get
 # These map get request for the URI "my_core/index" to the "index" action of the "myCore" controller
 
-  match "/events" => 'website_core#events', via: :get
+
 
 # changes the routes
 # these factor out the links into a nav bar
